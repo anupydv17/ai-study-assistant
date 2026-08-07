@@ -32,9 +32,10 @@ services:
 
     envVars:
       # Pinned so a future Python release cannot break the build without you
-      # choosing to upgrade.
+      # choosing to upgrade. If the build fails saying this version is not
+      # available, change it to one Render currently supports.
       - key: PYTHON_VERSION
-        value: "3.13"
+        value: "3.13.4"
 
       # Render injects the connection string from the database above.
       - key: DATABASE_URL
