@@ -1,0 +1,27 @@
+# ---- Virtual environment ----
+# Rebuildable from requirements.txt. Never commit it.
+venv/
+
+# ---- Python cache ----
+# Auto-generated compiled files. Machine-specific, useless to others.
+__pycache__/
+*.pyc
+*.pyo
+
+# ---- Secrets ----
+# API keys and passwords live here. NEVER commit this file.
+.env
+
+# ---- Database ----
+# Data, not code.
+*.db
+*.sqlite3
+
+# ---- User uploads ----
+# Runtime files, not source code.
+backend/uploads/
+
+# ---- Editors / OS noise ----
+.DS_Store
+.vscode/
+.idea/

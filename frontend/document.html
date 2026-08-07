@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study — AI Study Assistant</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header-inner">
+        <a class="brand" href="dashboard.html">← Dashboard</a>
+        <div class="app-header-actions">
+          <a class="button-secondary" href="profile.html">Profile</a>
+          <button id="logout-button" class="button-secondary" type="button">
+            Log out
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <p id="message" class="message" hidden></p>
+
+      <section class="doc-header">
+        <h1 id="document-title">Loading…</h1>
+        <p id="document-meta" class="panel-hint"></p>
+      </section>
+
+      <!-- role="tablist" tells screen readers these behave as tabs. -->
+      <nav class="tabs" role="tablist">
+        <button class="tab is-active" data-tab="summary" role="tab">Summary</button>
+        <button class="tab" data-tab="quiz" role="tab">Quiz</button>
+        <button class="tab" data-tab="flashcards" role="tab">Flashcards</button>
+        <button class="tab" data-tab="chat" role="tab">Chat</button>
+      </nav>
+
+      <!-- ---------- Summary ---------- -->
+      <section class="panel tab-panel" data-panel="summary">
+        <div class="panel-head">
+          <h2>Summary</h2>
+          <button id="summary-button" class="button-link" type="button">
+            Generate
+          </button>
+        </div>
+        <div id="summary-output" class="output">
+          <p class="panel-hint">Generate a revision summary of these notes.</p>
+        </div>
+      </section>
+
+      <!-- ---------- Quiz ---------- -->
+      <section class="panel tab-panel" data-panel="quiz" hidden>
+        <div class="panel-head">
+          <h2>Quiz</h2>
+          <div class="panel-controls">
+            <label class="inline-label" for="quiz-count">Questions</label>
+            <select id="quiz-count">
+              <option>3</option>
+              <option selected>5</option>
+              <option>10</option>
+            </select>
+            <button id="quiz-button" class="button-link" type="button">
+              Generate
+            </button>
+          </div>
+        </div>
+        <div id="quiz-output" class="output">
+          <p class="panel-hint">Test yourself with multiple-choice questions.</p>
+        </div>
+      </section>
+
+      <!-- ---------- Flashcards ---------- -->
+      <section class="panel tab-panel" data-panel="flashcards" hidden>
+        <div class="panel-head">
+          <h2>Flashcards</h2>
+          <div class="panel-controls">
+            <label class="inline-label" for="flashcard-count">Cards</label>
+            <select id="flashcard-count">
+              <option>5</option>
+              <option selected>10</option>
+              <option>15</option>
+            </select>
+            <button id="flashcards-button" class="button-link" type="button">
+              Generate
+            </button>
+          </div>
+        </div>
+        <div id="flashcards-output" class="output">
+          <p class="panel-hint">Click a card to flip it.</p>
+        </div>
+      </section>
+
+      <!-- ---------- Chat ---------- -->
+      <section class="panel tab-panel" data-panel="chat" hidden>
+        <div class="panel-head">
+          <h2>Chat with your notes</h2>
+          <button id="clear-chat-button" class="button-danger" type="button">
+            Clear
+          </button>
+        </div>
+
+        <div id="chat-log" class="chat-log">
+          <p class="panel-hint">Ask anything about these notes.</p>
+        </div>
+
+        <form id="chat-form" class="chat-form">
+          <input
+            id="chat-input"
+            type="text"
+            placeholder="Ask a question…"
+            autocomplete="off"
+            maxlength="2000"
+          />
+          <button id="chat-button" type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="js/document-page.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+# Web framework
+fastapi==0.141.1
+
+# ASGI server that actually runs the app
+uvicorn[standard]==0.52.1
+
+# Reads and validates configuration from environment variables / .env
+pydantic-settings==2.14.2
+
+# ORM — lets us write Python instead of raw SQL
+sqlalchemy==2.0.51
+
+# Database migrations
+alembic==1.19.0
+
+# PostgreSQL driver (unused on SQLite, required in production)
+psycopg[binary]==3.3.4
+
+# Password hashing
+bcrypt==5.0.0
+
+# Validates the EmailStr type used in schemas
+email-validator==2.3.0
+
+# Creates and verifies JWT access tokens
+pyjwt==2.13.0
+
+# Required by FastAPI to read the OAuth2 login form
+python-multipart==0.0.32
+
+# Reads text out of PDF files
+pymupdf==1.28.0
+
+# Gemini API client
+google-genai==2.17.0

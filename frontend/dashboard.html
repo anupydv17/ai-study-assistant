@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — AI Study Assistant</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header-inner">
+        <a class="brand" href="dashboard.html">AI Study Assistant</a>
+        <div class="app-header-actions">
+          <span id="user-name" class="user-name"></span>
+          <a class="button-secondary" href="profile.html">Profile</a>
+          <button id="logout-button" class="button-secondary" type="button">
+            Log out
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <p id="message" class="message" hidden></p>
+
+      <!-- ---------- Upload ---------- -->
+      <section class="panel">
+        <h2>Upload notes</h2>
+        <p class="panel-hint">PDF only, up to 10 MB.</p>
+
+        <form id="upload-form">
+          <div class="upload-row">
+            <input id="file-input" type="file" accept="application/pdf" required />
+            <button id="upload-button" type="submit">Upload</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ---------- Documents ---------- -->
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Your notes</h2>
+          <span id="document-count" class="badge"></span>
+        </div>
+
+        <!-- Three mutually exclusive states: loading, empty, or a list. -->
+        <p id="documents-loading" class="panel-hint">Loading…</p>
+
+        <div id="documents-empty" class="empty-state" hidden>
+          <p class="empty-title">No notes yet</p>
+          <p class="panel-hint">Upload a PDF above to get started.</p>
+        </div>
+
+        <ul id="document-list" class="document-list" hidden></ul>
+      </section>
+    </main>
+
+    <script type="module" src="js/dashboard-page.js"></script>
+  </body>
+</html>

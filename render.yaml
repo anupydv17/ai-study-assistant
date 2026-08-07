@@ -1,0 +1,59 @@
+# Render deployment configuration.
+#
+# Render reads this file when you connect the repository, so the whole setup
+# is described in version control rather than clicked together in a dashboard.
+# That is called "infrastructure as code": the next person can reproduce your
+# environment exactly.
+
+databases:
+  - name: study-assistant-db
+    databaseName: study_assistant
+    user: study_assistant
+    plan: free
+
+services:
+  - type: web
+    name: study-assistant-api
+    runtime: python
+    plan: free
+    rootDir: backend
+
+    buildCommand: pip install -r requirements.txt
+
+    # Migrations run BEFORE the server starts. If a migration fails, the
+    # deploy fails and the old version keeps serving traffic.
+    # $PORT is assigned by Render; binding to 0.0.0.0 accepts traffic from
+    # outside the container, which 127.0.0.1 would not.
+    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+
+    # Render calls this on a schedule. If it stops returning 200, the service
+    # is restarted. This is the endpoint you wrote in Milestone 1.
+    healthCheckPath: /health
+
+    envVars:
+      # Pinned so a future Python release cannot break the build without you
+      # choosing to upgrade.
+      - key: PYTHON_VERSION
+        value: "3.13"
+
+      # Render injects the connection string from the database above.
+      - key: DATABASE_URL
+        fromDatabase:
+          name: study-assistant-db
+          property: connectionString
+
+      # Generated once by Render and kept secret. Changing it logs everyone out.
+      - key: SECRET_KEY
+        generateValue: true
+
+      # sync: false means "do not store this in git — I will paste it into the
+      # Render dashboard myself". Correct for anything you pay for.
+      - key: GEMINI_API_KEY
+        sync: false
+
+      # Set this to your Vercel URL once the frontend is deployed.
+      - key: CORS_ORIGINS
+        sync: false
+
+      - key: DEBUG
+        value: "False"

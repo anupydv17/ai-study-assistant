@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile — AI Study Assistant</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header-inner">
+        <a class="brand" href="dashboard.html">← Dashboard</a>
+        <button id="logout-button" class="button-secondary" type="button">
+          Log out
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <h1 class="page-title">Profile</h1>
+      <p id="message" class="message" hidden></p>
+
+      <!-- ---------- Details ---------- -->
+      <section class="panel">
+        <h2>Your details</h2>
+        <p class="panel-hint">
+          Member since <span id="member-since">…</span>
+        </p>
+
+        <form id="profile-form">
+          <div class="field">
+            <label for="full_name">Full name</label>
+            <input id="full_name" name="full_name" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" disabled />
+            <p class="hint">
+              Email changes need confirmation by email, so they are not
+              available yet.
+            </p>
+          </div>
+
+          <button id="profile-button" class="form-button" type="submit">
+            Save changes
+          </button>
+        </form>
+      </section>
+
+      <!-- ---------- Password ---------- -->
+      <section class="panel">
+        <h2>Change password</h2>
+        <p class="panel-hint">
+          Changing your password logs out every other device.
+        </p>
+
+        <form id="password-form">
+          <div class="field">
+            <label for="current_password">Current password</label>
+            <input
+              id="current_password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="new_password">New password</label>
+            <input
+              id="new_password"
+              type="password"
+              autocomplete="new-password"
+              required
+            />
+            <p class="hint">At least 8 characters.</p>
+          </div>
+
+          <div class="field">
+            <label for="confirm_password">Confirm new password</label>
+            <input
+              id="confirm_password"
+              type="password"
+              autocomplete="new-password"
+              required
+            />
+          </div>
+
+          <button id="password-button" class="form-button" type="submit">
+            Change password
+          </button>
+        </form>
+      </section>
+
+      <!-- ---------- Danger zone ---------- -->
+      <section class="panel panel-danger">
+        <h2>Delete account</h2>
+        <p class="panel-hint">
+          This permanently removes your account, every PDF you uploaded, and
+          all summaries, quizzes, flashcards and chats. It cannot be undone.
+        </p>
+
+        <button id="delete-account-button" class="button-danger-solid" type="button">
+          Delete my account
+        </button>
+      </section>
+    </main>
+
+    <script type="module" src="js/profile-page.js"></script>
+  </body>
+</html>

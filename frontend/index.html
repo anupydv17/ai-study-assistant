@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Study Assistant</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth-page">
+    <main class="card">
+      <h1>AI Study Assistant</h1>
+      <p class="subtitle">One moment…</p>
+    </main>
+
+    <script type="module">
+      // Send people where they belong: the dashboard if they have a token,
+      // the login page if they do not.
+      import { isLoggedIn } from "./js/api.js";
+
+      window.location.replace(isLoggedIn() ? "dashboard.html" : "login.html");
+    </script>
+  </body>
+</html>
